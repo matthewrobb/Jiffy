@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jiffy</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<!-- Scripts are at the bottom, they hold the meat and potatoes of this app -->
+</head>
+<body class="stopped">
+
+	<div class="header">
+		<h1><a href="/">Jiffy</a></h1>
+		<ul class="nav">
+			<li class="started"><a href="#start">Start</a></li>
+			<li class="stopped"><a href="#stop">Stop</a></li>
+			<li><a href="#reset">Reset</a></li>
+		</ul>
+	</div>
+	
+	<div>
+	
+		<div id="feed">
+			<div id="alerts">
+				<script id="tmpl-jiffy-alerts" type="text/x-jquery-tmpl">
+					{{if Jiffy.updates > 0}}
+						<a href="#reset"><div><span class="number">${Jiffy.updates}</span> new photos</div></a>
+					{{/if}}
+				</script>
+			</div>
+			<script id="tmpl-jiffy-updates" type="text/x-jquery-tmpl">
+				{{each photos}}
+					<div class="new">
+						<a href="#photo">
+							<img src="${url_sq}" />
+							<h2>${title}</h2>
+							<span class="owner">By: <b>${ownername}</b></span>
+						</a>
+						<form>
+							<input type="hidden" name="id" value="${id}" />
+						</form>
+					</div>
+				{{/each}}
+			</script>
+		</div>
+	
+		<div id="display">
+			<script id="tmpl-jiffy-photos" type="text/x-jquery-tmpl">
+				{{each photos}}
+					<div id="${id}">
+						<img src="${url_m}"/>
+						<div>
+							{{if description._content}}<p>{{html description._content}}</p>{{/if}}
+						</div>
+					</div>
+				{{/each}}
+			</script>
+		</div>
+	</div>
+	
+	<!-- Using the standard current release of jQuery library -->
+	<script type="text/javascript" src="jquery.js"></script>
+	
+	<!-- Using the official jQuery Templates plugin -->
+	<script type="text/javascript" src="jquery.tmpl.js"></script>
+	
+	<!-- This is the Flickr API script I wrote for this exercise  -->
+	<script type="text/javascript" src="jiffy.js"></script>
+	
+	<!-- This script is the front end code I wrote for this exercise -->
+	<script type="text/javascript" src="jiffyapp.js"></script>
+	
+</body>
+</html>
