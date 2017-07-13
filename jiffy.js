@@ -33,7 +33,7 @@
 	*/
 	Jiffy.extend({
 		status: "stopped",
-		source: "http://api.flickr.com/services/rest/?method=flickr.photos.getRecent",
+		source: "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent",
 		timer: null,
 		delay: 14000,
 		updates: 0,
